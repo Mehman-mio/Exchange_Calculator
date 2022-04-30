@@ -51,7 +51,7 @@ public class Localization {
     public void selectCountryBulgaria(){
         WebDriverWait wait = new WebDriverWait(driver, 20);
         countryBulgaria.click();
-        wait.until(ExpectedConditions.elementToBeClickable(cookiesButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(cookiesButton)).click();//this method is for handling alert window about cookies
     }
     public void selectCountrySpain(){
         countrySpain.click();

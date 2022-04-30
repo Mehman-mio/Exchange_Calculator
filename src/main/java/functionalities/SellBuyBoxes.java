@@ -12,13 +12,13 @@ public class SellBuyBoxes {
     public SellBuyBoxes(WebDriver driver){
         this.driver = driver;
     }
-    @FindBy(xpath = "//tbody") WebElement table;
+    @FindBy(xpath = "//tbody") WebElement table; //this locator for representing table
     @FindBy(xpath = "//label[text()='Sell']/following-sibling::input") WebElement sellAmountBox;
     @FindBy(xpath = "//label[text()='Buy']/following-sibling::input") WebElement buyAmountBox;
 
     public void inputBuyAmount(){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(table));
+        wait.until(ExpectedConditions.visibilityOf(table)); //this condition for waiting loading table
         buyAmountBox.sendKeys("200");
     }
     public void inputSellAmount(){
