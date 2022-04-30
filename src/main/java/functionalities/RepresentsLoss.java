@@ -1,10 +1,13 @@
 package functionalities;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.TestUtils;
+
 import java.text.DecimalFormat;
 
 public class RepresentsLoss {
@@ -18,10 +21,19 @@ public class RepresentsLoss {
     String actualLoss, expectedLoss;
 
     @FindBy(xpath = "//tbody") WebElement table; //this locator for representing table
+    @FindBy(xpath = "//label[text()='Sell']/following-sibling::input") WebElement sellAmountBox;
+    @FindBy(xpath = "//form[starts-with(@class,  'form-inline')]/descendant::button[1]") WebElement filterButton;
     @FindBy(xpath = "//tbody/tr[1]/td[4]/span/span/span") WebElement ourCompanyAmountValue;
     @FindBy(xpath = "//tbody/tr[1]/td[5]/span/span/span") WebElement swedBankAmountValue;
     @FindBy(xpath = "//tbody/tr[1]/td[5]/span/span/span/following-sibling::span") WebElement lossValue;
 
+    public void inputNewSellAmount(){
+        sellAmountBox.clear();
+        sellAmountBox.sendKeys("100");
+    }
+    public void clickFilterButton(){
+        filterButton.click();
+    }
     public void initValues() {
         WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.visibilityOf(table)); //this condition for waiting loading table

@@ -11,6 +11,8 @@ public class RepresentsLossTests extends BaseTest {
     @Test(priority = 1)
     public void lossIsDisplayedTest(){
         RepresentsLoss representsLoss = PageFactory.initElements(driver, RepresentsLoss.class);
+        representsLoss.inputNewSellAmount();
+        representsLoss.clickFilterButton();
         representsLoss.initValues();
         Assert.assertEquals(representsLoss.checkLossIsDisplayed(), true);
     }
